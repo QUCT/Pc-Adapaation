@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<title>rem布局</title>
+	</head>
+
+	<body>
+		<div style="width:2rem;height: 2rem;">aaaa</div>
+		<script>
+			var c = document.createElement('style');
+			document.documentElement.firstElementChild.appendChild(c)
+			//			将当前viewport分为10rem,算出1rem对应的px,复制给html的font-size
+			function setHtmlSize() {
+				var dp = 1;
+				var pxRem = document.documentElement.clientWidth * dp / 10;
+				c.innerHTML = 'html{font-size:' + pxRem + 'px!important}'
+			}
+			setHtmlSize();
+			//现有设计师提供宽度为400px的设计稿，其中某个图片的宽度设计为20px，那么，CSS的写法就是img{width: 0.05rem;}，怎么得出这个结果
+			//设计稿的宽度视同手机宽度，即假设有一个viewport为400px的手机
+			//将它分成10rem，每个rem为40px;
+			//那么图片宽度20px自然就是0.5rem;
+		</script>
+	</body>
+
+</html>
